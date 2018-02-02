@@ -1,7 +1,6 @@
 import { CheeseList } from '../components/cheese-list';
 import {API_BASE_URL} from '../config';
 
-
 export const FETCH_CHEESE_REQUEST = 'SEARCH_CHARACTERS_REQUEST';
 export const fetchCheesesRequest = () => ({
     type: FETCH_CHEESE_REQUEST
@@ -35,11 +34,3 @@ export const fetchCheeses = () => dispatch => {
       })
       .catch(err => dispatch(fetchCheesesError(err)));
 };
-
-
-// export const fetchCheeses = name => dispatch => {
-//   dispatch(searchCharactersRequest());
-//   search(name)
-//   .then(character => dispatch(searchCharactersSuccess(character)))
-//   .catch(err => dispatch(searchCharactersError(err)));
-// };

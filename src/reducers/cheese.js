@@ -4,8 +4,6 @@ import {
   FETCH_CHEESE_ERROR
 } from '../actions/cheese';
 
-// import { FETCH_CHEESE_REQUEST} from '../actions/cheese';
-
 const initialState = {
   cheeses: [],
   loading: false,
