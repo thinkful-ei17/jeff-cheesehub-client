@@ -1,4 +1,5 @@
 import { CheeseList } from '../components/cheese-list';
+import {API_BASE_URL} from '../config';
 
 
 export const FETCH_CHEESE_REQUEST = 'SEARCH_CHARACTERS_REQUEST';
@@ -20,7 +21,7 @@ export const fetchCheesesError = error => ({
 
 export const fetchCheeses = () => dispatch => {
   dispatch(fetchCheesesRequest());
-  fetch('http://localhost:8080/api/cheeses')
+  fetch(`${API_BASE_URL}/cheeses`)
       .then(res => {
           if (!res.ok) {
               return Promise.reject(res.statusText);
