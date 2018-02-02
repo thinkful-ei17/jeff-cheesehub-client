@@ -1,7 +1,8 @@
 import {
   FETCH_CHEESE_REQUEST,
   FETCH_CHEESE_SUCCESS,
-  FETCH_CHEESE_ERROR
+  FETCH_CHEESE_ERROR,
+  ADD_CHEESE
 } from '../actions/cheese';
 
 const initialState = {
@@ -31,6 +32,11 @@ export function cheeseReducer(state=initialState, action) {
         loading: false,
         error: action.error
       }
+    case ADD_CHEESE:
+    return {
+      ...state,
+      cheeses: [...state.cheeses, action.cheese]
+    }
       default: return state;
   }
 }

@@ -1,4 +1,4 @@
-import { CheeseList } from '../components/cheese-list';
+// import { CheeseList } from '../components/cheese-list';
 import {API_BASE_URL} from '../config';
 
 export const FETCH_CHEESE_REQUEST = 'SEARCH_CHARACTERS_REQUEST';
@@ -18,7 +18,13 @@ export const fetchCheesesError = error => ({
     error
 });
 
-export const fetchCheeses = () => dispatch => {
+export const ADD_CHEESE = 'ADD_CHEESE';
+export const addCheese = cheese => ({
+  type: ADD_CHEESE,
+  cheese
+});
+
+export const fetchCheeses = cheese => dispatch => {
   dispatch(fetchCheesesRequest());
   fetch(`${API_BASE_URL}/cheeses`)
       .then(res => {

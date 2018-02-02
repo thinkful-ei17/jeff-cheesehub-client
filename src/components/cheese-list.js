@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchCheeses} from '../actions/cheese';
+import {fetchCheeses, addCheese} from '../actions/cheese';
 
 
 export class CheeseList extends React.Component {
@@ -11,7 +11,15 @@ export class CheeseList extends React.Component {
 render () {
 
   return (
+    <div className='cheese-add'>
     <ul>{this.props.cheeses}</ul>
+    <form onSubmit = { (e) => {
+      e.preventDefault();
+      this.props.dispatch(addCheese(this.input.value))}}>
+        <input type="search" ref={input => (this.input = input)} />
+        <button>Add a Cheese, any Cheese!</button>
+    </form>
+    </div>
     );
 
 }
