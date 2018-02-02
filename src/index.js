@@ -7,15 +7,15 @@ import store from './store';
 import CheeseList from './components/cheese-list';
 import registerServiceWorker from './registerServiceWorker';
 
-const cheeses = [
-  "Bath Blue ",
-  "Barkham Blue ",
-  "Buxton Blue"
-];
+// const cheeses = [
+//   "Bath Blue ",
+//   "Barkham Blue ",
+//   "Buxton Blue"
+// ];
 
 ReactDOM.render(
   <Provider store={store}>
-  <CheeseList cheeses={cheeses} />
+  <CheeseList />
   </Provider>,
-  , document.getElementById('root'));
+  document.getElementById('root'));
 registerServiceWorker();

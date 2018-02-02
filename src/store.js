@@ -1,6 +1,7 @@
-import { createStore } from 'redux';
-import cheeseReducer from './reducer';
+import { createStore, applyMiddleware } from 'redux';
+import cheeseReducer from './reducers/cheese';
 import thunk from 'redux-thunk';
 
 
-export default createStore(cheeseReducer, applyMiddleare(thunk));
+
+export default createStore(cheeseReducer, applyMiddleware(thunk));

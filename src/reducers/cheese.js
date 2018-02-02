@@ -1,8 +1,10 @@
 import {
   FETCH_CHEESE_REQUEST,
-  FETCH_CHEESES_SUCCESS,
-  FETCH_CHEESES_ERROR,
-} from './actions';
+  FETCH_CHEESE_SUCCESS,
+  FETCH_CHEESE_ERROR
+} from '../actions/cheese';
+
+// import { FETCH_CHEESE_REQUEST} from '../actions/cheese';
 
 const initialState = {
   cheeses: [],
@@ -12,20 +14,20 @@ const initialState = {
 
 export function cheeseReducer(state=initialState, action) {
   switch (action.type) {
-    case 'FETCH_CHEESE_REQUEST':
+    case FETCH_CHEESE_REQUEST:
     return {
       ...state,
       loading: true,
       error: null
     }
-    case 'FETCH_CHEESES_SUCCESS':
+    case FETCH_CHEESE_SUCCESS:
     return {
       ...state,
-      characters: action.cheeses,
+      cheeses: action.cheeses,
       loading: false,
       error: null
     }
-    case 'FETCH_CHEESES_ERROR':
+    case FETCH_CHEESE_ERROR:
       return {
         ...state,
         loading: false,

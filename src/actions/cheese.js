@@ -1,27 +1,38 @@
-import CheeseList from './components/cheese-list';
+import { CheeseList } from '../components/cheese-list';
 
-export const FETCH_CHEESES_REQUEST = 'SEARCH_CHARACTERS_REQUEST';
+
+export const FETCH_CHEESE_REQUEST = 'SEARCH_CHARACTERS_REQUEST';
 export const fetchCheesesRequest = () => ({
-    type: SEARCH_CHARACTERS_REQUEST
+    type: FETCH_CHEESE_REQUEST
 });
 
-export const FETCH_CHEESES_SUCCESS = 'SEARCH_CHARACTERS_SUCCESS';
-export const fetchCheesesSuccess = characters => ({
-    type: SEARCH_CHARACTERS_SUCCESS,
+export const FETCH_CHEESE_SUCCESS = 'SEARCH_CHARACTERS_SUCCESS';
+export const fetchCheesesSuccess = cheeses => ({
+    type: FETCH_CHEESE_SUCCESS,
     cheeses
 });
 
-export const FETCH_CHEESES_ERROR = 'SEARCH_CHARACTERS_ERROR';
+export const FETCH_CHEESE_ERROR = 'SEARCH_CHARACTERS_ERROR';
 export const fetchCheesesError = error => ({
-    type: SEARCH_CHARACTERS_ERROR,
+    type: FETCH_CHEESE_ERROR,
     error
 });
 
-export const fetchCheeses = cheese => dispatch => {
+export const fetchCheeses = () => dispatch => {
   dispatch(fetchCheesesRequest());
-  search(cheeses)
-  .then(cheese => dispatch(searchCharactersSuccess(cheese)))
-  .catch(err => dispatch(searchCharactersError(err)));
+  fetch('http://localhost:8080/api/cheeses')
+      .then(res => {
+          if (!res.ok) {
+              return Promise.reject(res.statusText);
+          }
+          console.log('fetch recieved');
+          return res.json();
+      })
+      .then(cheese => {
+        console.log(cheese);
+          dispatch(fetchCheesesSuccess(cheese));
+      })
+      .catch(err => dispatch(fetchCheesesError(err)));
 };
 
 
